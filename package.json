@@ -1,0 +1,26 @@
+{
+  "name": "lvqi",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LQQLQQ/movie_APP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LQQLQQ/movie_APP/issues"
+  },
+  "homepage": "https://github.com/LQQLQQ/movie_APP#readme",
+  "description": ""
+}

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="all">
+    <div class="header">
+        <div class="header_top">
+            <span>影城 </span>
+            <h1>国际影城</h1>
+            <span><i>!</i></span>
+        </div>
+        <div class="header_bot">
+            <p>影院重装开业，会员卡购票可享受5折优惠！</p>
+        </div>
+    </div>
+   <nav class="nav swiper-container" style="overflow: visible">
+       <!--<ul class="swiper-wrapper">
+           <li class="swiper-slide m-items"><img src="img/2.png" alt=""></li>
+           <li class="swiper-slide m-items"><img src="img/3.png" alt=""></li>
+           <li class="swiper-slide m-items"><img src="img/4.png" alt=""></li>
+           <li cclass="swiper-slide m-items"><img src="img/2.png" alt=""></li>
+           <li class="swiper-slide m-items"><img src="img/3.png" alt=""></li>
+           <li class="swiper-slide m-items"><img src="img/4.png" alt=""></li>
+           <li cclass="swiper-slide m-items"><img src="img/2.png" alt=""></li>
+           <li class="swiper-slide m-items"><img src="img/3.png" alt=""></li>
+           <li class="swiper-slide m-items"><img src="img/2.png" alt=""></li>
+           <li cclass="swiper-slide m-items"><img src="img/4.png" alt=""></li>
+           <li class="swiper-slide m-items"><img src="img/2.png" alt=""></li>
+       </ul>-->
+   </nav>
+    <textarea name="" id="mtql" cols="30" rows="10"style="display:none">
+        <% for(var i=0;i<list.length;i++){%>
+        <%if(i==0){%>
+         <div class="scroller">
+                <div class="main_top">
+                    <p class=""><span><%= list[i].movie_name%></span><span class="pian">片场：93分钟</span><span class="fen">8.7分</span></p>
+                    <p><%=list[i].movie_desc%></p>
+                </div>
+                <div class="remind">
+                    <p>中午12点前，会员统一价25元，限购2张<span class="san_rig"></span></p>
+                </div>
+                <div class="time_list swiper-container">
+                    <ul class="swiper-wrapper">
+                        <% for(var j in list[i].shows){ %>
+                      <!--  <li class="swiper-slide m-items active">今天11月29日</li>-->
+                        <li class="swiper-slide m-items"><%= j %></li>
+                       <%}%>
+                    </ul>
+                </div>
+                <div class="info_table">
+                    <div class="title">
+                        <p><span>!</span>温馨提示：电影开场前30分钟关闭在线售票</p>
+                    </div>
+                    <div class="table_list">
+                        <table>
+                             <% for(var k in list[i].shows ){ %>
+                              <% for(var n in list[i].shows[k] ){ %>
+                            <tr>
+                                <td class="ri">
+                                    <p class="black"><%= list[i].shows[k][n].start_time %></p>
+                                    <span class="hui"><%= list[i].shows[k][n].end_time %>散场</span>
+
+                                </td>
+                                <td>
+                                    <p class="black"><%= list[i].shows[k][n].language %></p>
+                                    <span class="hui"><%= list[i].shows[k][n].hall_name %></span>
+                                </td>
+                                <td class="xia">
+                                    <p class="red">%64</p>
+                                    <p class="two"><span>会员</span><span>￥<%= list[i].shows[k][n].price %></span></p>
+                                    <span class="hui le">影院价￥<%= list[i].shows[k][n].market_price %></span>
+                                </td>
+                                <td>
+                                    <% if( list[i].shows[k][n].is_all_sold == 0) { %>
+                                       <p class="border bl">场次过期</p>
+                                    <% }else{ %>
+                                         <p class="border or">y预定</p>
+                                    <% } %>
+                                </td>
+
+                            </tr>
+                             <% } %>
+                            <% } %>
+                        </table>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+         <%}else{%>
+             <div class="scroller hide">
+
+
+
+
+            </div>
+        <%}%>
+         <%}%>
+        </textarea>
+
+    <div class="main" id="main">
+      <div class="con">
+
+        <!--  <div class="scroller">
+                <% for(var i=0;i<list.length;i++){%>
+                <div class="main_top">
+                    <p class=""><span><%= list.movie_name%></span><span class="pian">片场：93分钟</span><span class="fen">8.7分</span></p>
+                    <p><%=list.movie_desc%></p>
+                </div>
+                <div class="remind">
+                    <p>中午12点前，会员统一价25元，限购2张<span class="san_rig"></span></p>
+                </div>
+                <div class="time_list swiper-container">
+                    <ul class="swiper-wrapper">
+                        <% for(var j=0;j<list[i].days.length;j++){%>
+                        &lt;!&ndash;  <li class="swiper-slide m-items active">今天11月29日</li>&ndash;&gt;
+                        <li class="swiper-slide m-items"><%= list[i][j].show_date%></li>
+                       <%}%>
+                    </ul>
+                </div>
+                <div class="info_table">
+                    <div class="title">
+                        <p><span>!</span>温馨提示：电影开场前30分钟关闭在线售票</p>
+                    </div>
+                    <div class="table_list">
+                        <% for(var m=0;m<list[i].shows.length;m++){%>
+                        <table>
+                            <tr>
+                                <td>
+                                    <p class="black"><%= list[i][m].start_time%></p>
+                                    <span class="hui"><%= list[i][m].end_time%>散场</span>
+                                </td>
+                                <td>
+                                    <p class="black"><%= list[i][m].language%></p>
+                                    <span class="hui"><%= list[i][m].hall_name%></span>
+                                </td>
+                                <td>
+                                    <p class="red">%64</p>
+                                    <p class="two"><span>会员</span><span>￥<%= list[i][m].price%></span></p>
+                                    <span class="hui">影院价￥<%= list[i][m].market_price%></span>
+                                </td>
+                                <td>
+                                    <p class="border">场次过期</p>
+                                </td>
+
+                            </tr>
+                        </table>
+                        <%}%>
+
+                    </div>
+
+                </div>
+                <%}%>
+            </div>
+        <div class="scroller hide">
+            <% for(var i=0;i<list.length;i++){%>
+            <div class="main_top">
+                <p class=""><span><%= list.movie_name%></span><span class="pian">片场：93分钟</span><span class="fen">8.7分</span></p>
+                <p><%=list.movie_desc%></p>
+            </div>
+            <div class="remind">
+                <p>中午12点前，会员统一价25元，限购2张<span class="san_rig"></span></p>
+            </div>
+            <div class="time_list swiper-container">
+                <ul class="swiper-wrapper">
+                    <% for(var j=0;j<list[i].days.length;j++){%>
+                    &lt;!&ndash;  <li class="swiper-slide m-items active">今天11月29日</li>&ndash;&gt;
+                    <li class="swiper-slide m-items"><%= list[i][j].show_date%></li>
+                    <%}%>
+                </ul>
+            </div>
+            <div class="info_table">
+                <div class="title">
+                    <p><span>!</span>温馨提示：电影开场前30分钟关闭在线售票</p>
+                </div>
+                <div class="table_list">
+                    <% for(var m=0;m<list[i].shows.length;m++){%>
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="black"><%= list[i][m].start_time%></p>
+                                <span class="hui"><%= list[i][m].end_time%>散场</span>
+                            </td>
+                            <td>
+                                <p class="black"><%= list[i][m].language%></p>
+                                <span class="hui"><%= list[i][m].hall_name%></span>
+                            </td>
+                            <td>
+                                <p class="red">%64</p>
+                                <p class="two"><span>会员</span><span>￥<%= list[i][m].price%></span></p>
+                                <span class="hui">影院价￥<%= list[i][m].market_price%></span>
+                            </td>
+                            <td>
+                                <p class="border">场次过期</p>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <%}%>
+
+                </div>
+
+            </div>
+            <%}%>
+        </div>-->
+      </div>
+    </div>
+</body>
+</html>
+<script src="lib/require.js" data-main="js/main"></script>
+<!--<script src="lib/jquery.js"></script>
+<script src="lib/swiper.js"></script>
+<script src="lib/index.js"></script>-->
+<!--<script src="lib/iscroll5.js"></script>-->
+<script>
+    var aa=document.documentElement.clientWidth/6.4
+    document.documentElement.style.fontSize=aa+"px";
+  /*  var main=new IScroll("#main")*/
+
+
+
+</script>
